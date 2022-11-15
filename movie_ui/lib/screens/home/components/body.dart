@@ -3,21 +3,25 @@
 import 'package:flutter/material.dart';
 import 'package:movie_ui/constants.dart';
 
+
 import 'categories.dart';
 import 'genre.dart';
+import 'movie_carousel.dart';
 
 class Body extends StatelessWidget {
   const Body({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        CategoryList(),
-        Genres(),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          CategoryList(),
+          Genres(),
+          MovieCarousel(),
+        ],
+      ),
     );
   }
 }
-
 
