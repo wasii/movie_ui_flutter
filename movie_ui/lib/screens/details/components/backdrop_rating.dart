@@ -98,6 +98,7 @@ class BackdropAndRating extends StatelessWidget {
                         "Rate This",
                         style: Theme.of(context).textTheme.bodyText2,
                       ),
+                      Text(""),
                     ],
                   ),
                   //Metascore

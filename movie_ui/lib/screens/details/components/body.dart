@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:movie_ui/constants.dart';
+import 'package:movie_ui/screens/details/components/title_duration_and_fab_button.dart';
+import 'package:movie_ui/screens/home/components/genre_card.dart';
 
 import '../../../model/movie.dart';
 import 'backdrop_rating.dart';
@@ -17,39 +19,21 @@ class Body extends StatelessWidget {
     return Column(
       children: [
         BackdropAndRating(size: size, movie: movie),
+        SizedBox(height: kDefaultPadding / 2),
+        TitleDurationAndFabButton(movie: movie),
         Padding(
-          padding: EdgeInsets.all(kDefaultPadding),
-          child: Row(children: [
-              Expanded(
-                child: Column(
-                  children: [],
-                ),
+          padding: EdgeInsets.symmetric(vertical: kDefaultPadding / 2),
+          child: SizedBox(
+            height: 36,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: movie.genra.length,
+              itemBuilder: (context, index) => GenreCard(
+                genres: movie.genra[index],
               ),
-              SizedBox(
-                height: 64,
-                width: 64,
-                child: TextButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                    foregroundColor: MaterialStateProperty.all<Color>(Colors.pink),
-                    backgroundColor: MaterialStateProperty.all<Color>(kSecondaryColor),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18),
-                        // side: 
-                      )
-                    )
-                  ),
-                  child: Icon(
-                    Icons.add,
-                    color: Colors.white,
-                    size: 28,
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
-        ),
+        )
       ],
     );
   }
